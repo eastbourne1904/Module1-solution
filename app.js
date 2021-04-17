@@ -1,23 +1,40 @@
-(function () {
-'use strict';
+(function() {
+  'use strict';
+  angular
+    .module('LunchCheck', [])
+    .controller('LunchCheckController', LunchCheckController);
 
-angular.module('LunchCheck', [])
-.controller('LunchCheckController', LunchCheckController);
+    LunchCheckController.$inject = ['$scope'];
 
-LunchCheckController.$inject = ['$scope'];
-function LunchCheckController($scope) {
-  $scope.textbox = $scope.textbox;
-  $scope.button = function() {
-    $scope.button = "Check If Too Much";
-  };
+    function LunchCheckController($scope) {
+      $scope.dishes = $scope.dishes;
+      $scope.numberOfDishes;
+      $scope.message = "";
+      $scope.messageType = "";
 
-  $scope.Message = function () {
-    return "Yaakov likes to eat healthy snacks at night!";
-  };
+      $scope.checkIfTooMuch = function() {
+        if(!$scope.dishes) {
+          $scope.message = "Please enter data first";
+          $scope.messageType = 'alert-success'
+        } else if (checkDishesLength($scope.dishes) < 4) {
+          $scope.message = "Enjoy!";
+          $scope.messageType = 'alert-success'
+        } else {
+          $scope.message = "Too much!";
+          $scope.messageType = 'alert-danger'
+        }
+      };
 
-  $scope.feedYaakov = function () {
-    $scope.stateOfBeing = "fed";
-  };
-}
-
+      function checkDishesLength(dishes) {
+        var dishesArr = dishes.split(",");
+        angular.forEach(dishesArr, function(value, key) {
+          console.log("value: " + value);
+          if(!value || value == " ") {
+            console.log("Remove the value: " + value);
+            dishesArr.splice(key, 1);
+          }
+        });
+        return dishesArr.length;
+      }
+    }
 })();
