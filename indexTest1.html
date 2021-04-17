@@ -7,6 +7,8 @@
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
     </style>
+    <script src="js/angular.min.js"></script>
+    <script src="js/appTest1.js"></script>
   </head>
 <body ng-app="LunchCheck">
    <div class="container" ng-controller="LunchCheckController">
@@ -22,7 +24,7 @@
          </div>
          <div class="form-group message" ng-if="message">
            <div class="alert" ng-class="messageType" role="alert">
-            {{ message }}
+            {{message}}
            </div>
          </div>
    </div>
