@@ -3,35 +3,40 @@
 
 <head>
     <title>Lunch Checker</title>
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
-        .message {
-            font-size: 1.3em;
-            font-weight: bold;
-        }
+      .message { font-size: 1.3em; font-weight: bold; }
     </style>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
 
-<body ng-app="LunchChecker">
-    <div class="container" ng-controller="LunchCheckController">
+<body ng-app="LunchChecker" ng-style={'padding':'10px'}>
+    <div class="container" ng-controller="LunchCheckController"
+      ng-style="{'background-image':'url(lunchPic.png)',
+                 'background-repeat': 'no-repeat'}">
         <h1>Lunch Checker</h1>
 
         <div class="form-group">
-            <input ng-style="{ 'width' : width }" id="lunch-menu" type="text" ng-model="menuItems" placeholder="list comma separated dishes you usually have for lunch" class="form-control">
-            <h6>
-               <i>Please note: Empty item, i.e., <code>, ,</code> is not considered as an item towards to the count</i>
-             </h6>
+            <input ng-style="{'width':width}"
+                id="lunch-menu"
+                type="text"
+                ng-model="menuItems"
+                placeholder="list comma separated dishes you usually have for lunch"
+                class="form-control">
+            <h5>
+               <i>Please note: Empty item, i.e., <code>,
+                 ,</code> is not considered as an item towards to the count</i>
+             </h5>
         </div>
         <div class="form-group">
-            <button class="btn btn-default" ng-click="checkIfTooMuch();">Check If Too Much</button>
+            <button class="btn btn-default" ng-click="checkIfTooMuch();">Check
+                If Too Much</button>
         </div>
         <div class="form-group message">
             <!-- Your message can go here. -->
             <div class="alert alert-{{alertState}}" role="alert">
-                <span class="glyphicon glyphicon-{{icon}}" aria-hidden="true"></span>
-                <!-- <span class="sr-only">{{alertState}}</span>  -->
+                <span class="glyphicon glyphicon-{{icon}}"
+                      aria-hidden="true"></span>
                 <span>{{response}}</span>
             </div>
         </div>

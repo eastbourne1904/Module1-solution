@@ -1,4 +1,3 @@
-//./app.js
 //Main app js file to define angular module and controller
 (function(){
   'use strict';
@@ -13,7 +12,8 @@
     $scope.response = ""; // holds the response message
     $scope.alertState = ""; // holds the alert state to style the response message
     $scope.icon = ""; // glyphicon icon to associate with the response message
-    $scope.width = '50%'; // holds the width of the input box
+    $scope.width = '43%'; // holds the width of the input box
+
 //function to split the lunch menu text and count the no. of items
     function getMenuItemsCount(string){
       var itemCount = 0;
